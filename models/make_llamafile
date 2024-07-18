@@ -22,8 +22,7 @@ cat <<EOL > $ARGS_FILE
 $MODEL_NAME.gguf
 --host
 0.0.0.0
--ngl
-9999
+...
 EOL
 
 # create the llamafile
