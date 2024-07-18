@@ -26,7 +26,7 @@ $MODEL_NAME.gguf
 EOL
 
 # create the llamafile
-cp llamafile "bin/$MODEL_NAME.llamafile"
+cp llamafile-0.8.8 "bin/$MODEL_NAME.llamafile"
 
 # combine the runtime files
 echo "Creating llamafile"
