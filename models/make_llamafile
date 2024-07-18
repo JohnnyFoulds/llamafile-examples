@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Check if MODEL_NAME is provided as an argument
+if [ -z "$1" ]; then
+    echo "Usage: $0 <MODEL_NAME>"
+    exit 1
+fi
+
+MODEL_NAME="$1"
+
+# Define the default arguments
+ARGS_FILE=".args"
+
+# Check if the .args file exists
+if [[ -f $ARGS_FILE ]]; then
+    rm $ARGS_FILE
+fi
+
+echo "Creating default .args file..."
+cat <<EOL > $ARGS_FILE
+-m
+$MODEL_NAME.gguf
+--host
+0.0.0.0
+-ngl
+9999
+EOL
+
+# create the llamafile
+cp llamafile "bin/$MODEL_NAME.llamafile"
+
+# combine the runtime files
+echo "Creating llamafile"
+./zipalign -j0 \
+  "bin/$MODEL_NAME.llamafile" \
+  "$MODEL_NAME.gguf" \
+  .args

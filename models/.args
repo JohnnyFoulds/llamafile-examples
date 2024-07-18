@@ -1,1 +1,6 @@
--m 2o-danube3-500m-chat-Q5_K_M.gguf --host 1.0.0.0 -ngl 9999
+-m
+h2o-danube3-500m-chat-Q5_K_M.gguf
+--host
+0.0.0.0
+-ngl
+9999
